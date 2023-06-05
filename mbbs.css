@@ -1,0 +1,125 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+body{
+    min-height:100vh;
+    width:100%;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    flex-wrap:wrap;
+    background:#ffffff;
+    color:#000000;
+    transition:1s ease-in;
+
+
+}
+body.dark-mode{
+    background:#1a1a1a;
+    color:#ffffff;
+}
+#container{
+    min-height:50vh;
+    flex-basis:60%;
+    width:60%;
+    display:flex;
+    flex-direction:column;
+    flex-wrap:wrap;
+    justify-content: space-around;
+    padding:10px;
+    border-radius:10px;
+   
+}
+#start{
+    flex-basis:90%;
+    width:90%;
+    display:flex;
+    flex-direction:column;
+}
+#studentForm{
+    width:100%;
+    flex-basis:100%;
+    display:flex;
+   flex-direction:column;
+   justify-content:center 
+}
+#studentForm input,textarea{
+    width:90%;
+    flex-basis:90%;
+    padding:10px;
+    margin:5px;
+    resize:none;
+    border-radius:10px;
+}
+textarea::placeholder{
+    font-size:18px;
+}
+#submitButton{
+    width:40%;
+    flex-basis:40%;
+    padding:10px;
+    height:20px;
+   border-radius:10px;
+   transition:1s ease-in;
+
+}
+#submitButton:hover{
+    cursor:pointer;
+    background:green;
+    color:#fff;
+
+}
+#mode-toggle{
+    width:50px;
+    flex-basis:20%;
+    padding:10px;
+    height:50px;
+    border-radius: 50%;
+}
+.change{
+    background:#000;
+    color:#fff;
+    border-radius:10px;
+
+}
+#mode-toggle:hover{
+    cursor:pointer;
+}
+#displayButton{
+    width:20%;
+    flex-basis:20%;
+    display:flex;
+    justify-content:center;
+    padding:10px;
+    margin-top:5px;
+    height:20px;
+   border-radius:10px;
+   transition:1s ease-in;
+}
+
+#displayButton:hover{
+    cursor:pointer;
+    background:green;
+    color:#fff;
+
+}
+
+table{
+    width:100%;
+    
+}
+table{
+    border-collapse:collapse;
+}
+table td,table th{
+    border:1px solid black;
+}
+@media only screen and (max-width:600px){
+    #container{
+        width:100%;
+        flex-basis:100%
+    }
+}
