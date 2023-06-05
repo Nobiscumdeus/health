@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chasfat | MBBS 2k26 --Search</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style type="text/css">
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+        }
+        body{
+            min-height:100vh;
+            display:flex;
+            background:#333;
+            color:#fff;
+            flex-direction:column;
+            justify-content: center;
+            align-items:center;
+        }
+        #full{
+            width:80%;
+            flex-basis:80%;
+            min-height:50vh;
+            display:flex;
+            flex-direction:column;
+            justify-content: center;
+            align-items: center;
+            background:#000;
+            color:#fff;
+            border-radius:10px;
+        }
+        #form{
+            width:100%;
+            display:flex;
+            flex-direction:column;
+            justify-content: center;
+            align-items:center;
+            padding:10px;
+        }
+        
+        input,#searchButton{
+            width:50%;
+            height:40px;
+            border-radius:5px;
+            padding:10px;
+            color:#000;
+            text-align:center;
+            margin:5px;
+        }
+        #searchButton:hover{
+            background:green;
+        }
+      
+        table{
+            border:2px solid green;
+            border-collapse:collapse;
+
+        }
+        tr:nth-child(1){
+            background:#000;
+
+        }
+        tr,td{
+            border:2px solid green;
+        }
+        td{
+            padding:5px;
+        }
+       
+        table tr:hover{
+            cursor:pointer;
+            background:grey;
+        }
+        a{
+            text-decoration: none;
+        }
+        #exit{
+            margin:5px;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="full">
+        <form id="form">
+            <input type="text" id="searchID" placeholder="Enter Fellas ID" required/>
+            <input type="text" id="searchName" placeholder="Enter the Fellow's names in order" required/>
+            <button type="submit" id="searchButton"> Search </button>
+            <div id="result"></div>
+
+        </form>
+        <a id="exit" href="public.html" class="btn btn-danger btn-2x"> Ready to Exit Boss ?</a>
+
+    </div>
+    <p> Chasfat Project$ &copy; 2023</p>
+
+    <script>
+        document.getElementById("searchButton").addEventListener("click",function(){
+            var searchId=document.getElementById("searchID").value;
+            var searchname=document.getElementById("searchName").value;
+
+            var xhr=new XMLHttpRequest();
+            xhr.open("GET","retrieve_some.php",true);
+            xhr.onreadystatechange=function(){
+                if(xhr.readyState===4 && xhr.status===200){
+                    var responseData=JSON.parse(xhr.responseText);
+                    var searchResult=searchData(responseData,searchId,searchName);
+                    displayData(searchResult);
+                }
+            }
+            xhr.send();
+           
+            $('#exit').show();
+        });
+
+        function searchData(data,searchId,searchName){
+            var searchResult=[];
+            for(var i=0; i<data.length;i++){
+                if(data[i].id===searchId && data[i].name===searchName){
+                    searchResult.push(data[i]);
+                }
+            }
+            return searchResult;
+        }
+
+        function displayData(data){
+            var resultDiv=document.getElementById("result");
+            resultDiv.innerHTML="";
+
+            //Create a table to display the data
+            var table=document.createElement("table");
+            var heads=table.insertRow();
+            heads.insertCell().innerHTML="Unique ID";
+            heads.insertCell().innerHTML="Full Names ";
+            heads.insertCell().innerHTML="Birth Month/Day";
+            heads.insertCell().innerHTML="State of Origin";
+            heads.insertCell().innerHTML="Nationality";
+            heads.insertCell().innerHTML="Hobbies";
+            heads.insertCell().innerHTML="Cellular Contact";
+            heads.insertCell().innerHTML="Email Address";
+            heads.insertCell().innerHTML="Why Medicine and UI?"
+            //Iterate over the results in the data
+            for(var i=0;i<data.length;i++){
+                var row=table.insertRow();
+                var idCell=row.insertCell();
+                var nameCell=row.insertCell();
+                var birthCell=row.insertCell();
+                var stateCell=row.insertCell();
+                var nationCell=row.insertCell();
+                var hobbiesCell=row.insertCell();
+                var contactCell=row.insertCell();
+                var emailCell=row.insertCell();
+                var reasonCell=row.insertCell();
+    
+                idCell.innerHTML=data[i].id;
+                nameCell.innerHTML=data[i].name;
+                birthCell.innerHTML=data[i].birth;
+                stateCell.innerHTML=data[i].state;
+                nationCell.innerHTML=data[i].nation;
+                hobbiesCell.innerHTML=data[i].hobbies;
+                contactCell.innerHTML=data[i].contact;
+                emailCell.innerHTML=data[i].email;
+                reasonCell.innerHTML=data[i].reason;
+
+            }
+            resultDiv.appendChild(table);
+
+           
+        }
+    </script>
+</body>
+</html>
