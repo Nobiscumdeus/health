@@ -1,4 +1,58 @@
 <?php
+//Preventing submission more than once 
+if($_SERVER['REQUEST_METHOD']==='POST'){
+    //Get the form data 
+    $name=htmlspecialchars(stripslashes(trim($_POST['name'])));
+   $birth=htmlspecialchars(stripslashes(trim($_POST['birth'])));
+   $state=htmlspecialchars(stripslashes(trim($_POST['state'])));
+   $nation=htmlspecialchars(stripslashes(trim($_POST['nation'])));
+   $hobbies=htmlspecialchars(stripslashes(trim($_POST['hobbies'])));
+   $contact=htmlspecialchars(stripslashes(trim($_POST['contact'])));
+   $email=htmlspecialchars(stripslashes(trim($_POST['email'])));
+   $reason=htmlspecialchars(stripslashes(trim($_POST['reason'])));
+   $gender=htmlspecialchars(stripslashes(trim($_POST['gender'])));
+   $nickname=htmlspecialchars(stripslashes(trim($_POST['nickname'])));
+   $password=htmlspecialchars(stripslashes(trim($_POST['password'])));
+
+   //Check if the details are already submitted
+   if(detailsSubmitted($name,$birth,$state,$nation,$hobbies,$contact,$email,$reason,$gender,$nickname,$password)){
+     echo "<script type='text/javascript'>alert('Details have been submitted already');
+     window.setTimeout(function(){window.location.href='mbbs.php'},2000); </script>
+     ";
+     exit;
+   }
+   echo "<script type='text/javascript'> Details received successfully;
+   window.setTimeout(function(){window.location.href='mbbs.php'},2000);</script>";
+
+
+}
+function detailsSubmitted($name,$birth,$state,$nation,$hobbies,$contact,$email,$reason,$gender,$nickname,$password){
+    $data=loadSubmittedDetails();
+
+    foreach($data as $detail){
+        //Compare the details
+        if($detail['name']===$name && $detail['birth'] && $detail['state']===$state && $detail['nation']===$nation && $detail['hobbies']===$hobbies && $detail['contact']===$contact && $detail['email'] ===$email && $detail['reason']===$reason && $detail['gender']===$gender && $detail['nickname']===$nickname && $detail['password']===$password){
+            return true; //Details are already submitted 
+        }
+    }
+    return false ;//Details are not submitted
+}
+
+function loadSubmittedDetails(){
+    $data=file_get_contents('data.json');
+    $data=json_decode($data,true);
+    return $data;
+}
+
+
+
+
+
+
+
+
+
+
 //Generate a unique id
 if(isset($_POST['submitButton'])){
     $id=uniqid();

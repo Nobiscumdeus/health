@@ -1,16 +1,5 @@
 <?php
-/** 
- * $data=json_decode(file_get_contents("data.json"),true);
 
-$searchId=$_GET['searchId'];
-$searchname=$_GET['searchName'];
-
-$searchResult=array_filter($data,function($item) use($searchId,$searchName){
-    return $item['password']===$searchId && $item['name']===$searchName;
-
-});
-echo json_encode($searchResult);
-*/
 
 //Lets first check if the details have been submitted
 if(isset($_POST['submit'])){
@@ -83,104 +72,37 @@ if(isset($_POST['submit'])){
 
 
 
-
-
-
-/**
- *  //Lets load some admin data
-    $adminData=file_get_contents('admin.json');
-    $admin=json_decode($adminData,true);
-
-    //Check if the names and password are correct
-    $name=htmlspecialchars(stripslashes(trim($_POST['name'])));
-    $password=htmlspecialchars(stripslashes(trim($_POST['password'])));
-
-    //Check if the entered details matches those of the admin
-    if($name===$admin['name'] && $password===$admin['password']){
-        $jsonData=file_get_contents('data.json');
-        $data=json_decode($jsonData,true);
-        //Getting the user's password for indentification 
-        $password=$_POST['password'];
-        //Update the details for the specific user alone 
-        if(isset($data[$password])){
-            $data[$password]['name']=htmlspecialchars(stripslashes(trim($_POST['name'])));
-            $data[$password]['password']=htmlspecialchars(stripslashes(trim($_POST['password'])));
-            $data[$password]['birth']=htmlspecialchars(stripslashes(trim($_POST['birth'])));
-            $data[$password]['state']=htmlspecialchars(stripslashes(trim($_POST['state'])));
-            $data[$password]['nation']=htmlspecialchars(stripslashes(trim($_POST['nation'])));
-            $data[$password]['hobbies']=htmlspecialchars(stripslashes(trim($_POST['hobbies'])));
-            $data[$password]['contact']=htmlspecialchars(stripslashes(trim($_POST['contact'])));
-            $data[$password]['email']=htmlspecialchars(stripslashes(trim($_POST['email'])));
-            $data[$password]['gender']=htmlspecialchars(stripslashes(trim($_POST['gender'])));
-            $data[$password]['nickname']=htmlspecialchars(stripslashes(trim($_POST['nickname'])));
-
-          
-        }
-        //Write the updated data to the JSON file 
-        $file=fopen('data.json','w');
-        fwrite($file,json_encode($data));
-        fclose($file);
-
-        //Redirect to the form page 
-        echo "<script type='text/javascript'> alert('Congrats!!! Your details have been been updated future Doctor') ;
-        window.setTimeout(function(){window.location.href='mbbs.php'},1000);
-        </script> ";
-
-    }else{
-        echo "<script type='text/javascript'> alert('Ooops!!! Your credentials are invalid ') ;
-        window.setTimeout(function(){window.location.href='mbbs.php'},1000);
-        </script> ";
-
-       
-    }
-
-
-
- */
-
-
-   
-
-
-
-
-
-
-
+}
 /** 
- *  if(isset($admin[$password])){  
-
-        $admin[$password]['name']=$_POST['name'];
-        $admin[$password]['password']=$_POST['password'];
-
-
-        //Read existing JSON data from file
-       // $jsonData=file_get_contents('data.json');
-        //$data=json_decode($jsonData,true);
-
-        //Update the data with form input values
-        $file=fopen('data.json','w');
-        fwrite($file,json_encode($admin));
-        fclose($file);
-
-        echo "<script type='text/javascript'> alert('Congrats!!! Your details have been been updated future Doctor') ;
-   window.setTimeout(function(){window.location.href='mbbs.php'},2000);
-   </script> ";
-    }else{
-        echo "Ooops !!! Invalid credentials , Access denied!!!;
-        window.setTimeout(function(){window.location.href='mbbs.php'},2000);
-        ";
-       
+ * 
+//Code to delete data if need be 
+$jsonData=file_get_contents('data.json');
+//Decode the json file 
+$data=json_decode($jsonData);
+//Find the index of the data you want to delete 
+$indexToDelete=-1;
+foreach($data as $index=>$item){
+    if($item['id']==eg123){ //But replace e.g123 with the actual id you want to delete 
+        $indexToDelete=$index;
+        break;
     }
-*/
-
-
-    //Lets replace these with some forms of validation
-   
-
-
 }
 
+//Delete the data if found
+if($indexToDelete >=0){
+    array_splice($data,$indexToDelete,1);
+
+    //Encode the updated data back to json
+    $updatedJsonData=json_encode($data);
+
+    //Save the updated JSOn Data back to the file 
+    file_put_content('data.json',$updatedJsonData);
+    echo "Data deleted succesfully";
+}else{
+    echo "Data not found";
+}
+
+*/
 
 
 ?>
