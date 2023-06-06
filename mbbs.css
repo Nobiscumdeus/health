@@ -2,6 +2,7 @@
     margin:0;
     padding:0;
     box-sizing:border-box;
+    
 }
 body{
     min-height:100vh;
@@ -20,6 +21,7 @@ body{
 body.dark-mode{
     background:#1a1a1a;
     color:#ffffff;
+   
 }
 #container{
     min-height:50vh;
@@ -54,14 +56,21 @@ body.dark-mode{
     resize:none;
     border-radius:10px;
 }
+
 textarea::placeholder{
     font-size:18px;
+}
+.btn{
+    width:30%;
+    flex-basis:30%;
 }
 #submitButton{
     width:40%;
     flex-basis:40%;
     padding:10px;
     height:20px;
+    background:#333;
+    color:#fff;
    border-radius:10px;
    transition:1s ease-in;
 
@@ -69,7 +78,7 @@ textarea::placeholder{
 #submitButton:hover{
     cursor:pointer;
     background:green;
-    color:#fff;
+    color:#000;
 
 }
 #mode-toggle{
@@ -117,6 +126,31 @@ table{
 table td,table th{
     border:1px solid black;
 }
+#sex{
+    width:70%;
+    display: flex;
+    flex-direction:row;
+    
+    justify-content:center;
+    align-items:center;
+}
+input[type="radio"]{
+    width:30px;
+    height:30px;
+    border-radius:50%;
+}
+input[type="radio"]:hover{
+    cursor:pointer;
+}
+span{
+    font-size:18px;
+}
+input[type="password"]::placeholder{
+    font-size:14px;
+    color:#ff004f;
+
+}
+
 @media only screen and (max-width:600px){
     #container{
         width:100%;

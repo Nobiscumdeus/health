@@ -24,7 +24,7 @@
             align-items:center;
         }
         #full{
-            width:80%;
+            width:100%;
             flex-basis:80%;
             min-height:50vh;
             display:flex;
@@ -34,6 +34,35 @@
             background:#000;
             color:#fff;
             border-radius:10px;
+        }
+        #full h3{
+            color:red;
+            animation:update 2s ease-in-out;
+
+        }
+        @keyframes update{
+            0%{
+                color:#fff;
+                opacity:0;
+
+            }
+            50%{
+                color:#fff;
+                opacity:0.5;
+               
+            }
+            75%{
+                color:#fff;
+                opacity:0.8;
+
+            }
+            100%{
+                color:red;
+                opacity:1;
+                
+
+
+            }
         }
         #form{
             width:100%;
@@ -45,13 +74,29 @@
         }
         
         input,#searchButton{
-            width:50%;
+           
             height:40px;
             border-radius:5px;
             padding:10px;
             color:#000;
             text-align:center;
             margin:5px;
+        }
+        input{
+            width:80%;
+        }
+        textarea{
+            width:80%;
+            resize:none;
+            color:#000;
+            font-size:18px;
+            text-align:center;
+        }
+        textarea::placeholder{
+            text-align:center;
+        }
+        #searchButton{
+            width:20%;
         }
         #searchButton:hover{
             background:green;
@@ -83,25 +128,93 @@
         #exit{
             margin:5px;
         }
+        #sex{
+            width:70%;
+            display: flex;
+            flex-direction:row;
+            
+            justify-content:center;
+            align-items:center;
+        }
+        input[type="radio"]{
+            width:20px;
+            height:20px;
+            border-radius:50%;
+            padding:10px;
+        }
+        input[type="radio"]:hover{
+            cursor:pointer;
+        }
+        span{
+            font-size:16px;
+            margin:10px;
+        }
+        input[type="password"]::placeholder{
+            font-size:14px;
+            color:#ff004f;
+        
+        }
 
     </style>
 </head>
 <body>
     <div id="full">
-        <form id="form">
-            <input type="text" id="searchID" placeholder="Enter Fellas ID" required/>
-            <input type="text" id="searchName" placeholder="Enter the Fellow's names in order" required/>
-            <button type="submit" id="searchButton"> Search </button>
+        <h3>Update your Details ?</h3> 
+        <form action="retrieve_some.php" method="POST" id="form">
+            <input type="text" id="searchName" name="name" placeholder="Enter your Names in order" required/>
+            <input type="password" id="searchID" name="password" placeholder="Enter Your Correct password to update details" required/>
+            <input type="text" name="birth" id="birth" placeholder="Birthday without Year e.g. JANUARY 21ST" required>
+            <input type="text" name="state" id="state" placeholder="Your State of Origin e.g.  ONDO" required>
+            <input type="text" name="nation" id="nation" placeholder="Enter Your Nationality e.g. Nigerian" required>
+            <input type="text"  name="hobbies" id="hobbies" placeholder="Mention your Hobbies " required>
+            <input type="tel"  name="contact" id="contact" placeholder="Enter a hotline you can be reached through: Optional">
+            <input type="email" name="email" id="email" placeholder="Enter your email address : Optional">
+            <div id="sex">
+                <span> <b>Male</b> </span>
+                <input type="radio" name="gender" id="gender1" value="Male"  required />
+               
+        
+                
+                <span> <b> Female </b> </span>
+                <input type="radio" name="gender" id="gender2" value="Female" required/> 
+    </div>
+                
+            <input type="text" name="nickname" id="nickname" placeholder="Your Nickname or P.K.A. ? " />
+            <input type="hidden" name="id" id="userId" value="" />
+           
+            <!--
+                 <input type="text" id="reason" placeholder="Why did you Chose Medicine ? " required>
+            -->
+           
+            <textarea name="reason" name="reason" id="reason" cols="30" rows="7" placeholder="Why did you choose to study Medicine and why in University of Ibadan ?"></textarea>
+            
+
+           
+
+
+
+
+
+
+
+
+
+            <button type="submit" name="submit" id="searchButton"> Update Details </button>
             <div id="result"></div>
 
         </form>
         <a id="exit" href="public.html" class="btn btn-danger btn-2x"> Ready to Exit Boss ?</a>
 
     </div>
+
+
     <p> Chasfat Project$ &copy; 2023</p>
 
-    <script>
-        document.getElementById("searchButton").addEventListener("click",function(){
+
+
+    <!--
+         <script>
+        document.getElementById("form").addEventListener("submit",function(){
             var searchId=document.getElementById("searchID").value;
             var searchname=document.getElementById("searchName").value;
 
@@ -174,5 +287,8 @@
            
         }
     </script>
+
+    -->
+   
 </body>
 </html>

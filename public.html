@@ -23,12 +23,23 @@
             
 
         }
-        body h4{
+        body h5{
             color:#fff;
             width:40%;
             flex-basis:40%;
             letter-spacing:1px;
+            animation:fadein 2s ease-in-out;
             
+        }
+        @keyframes fadein{
+            from{
+                opacity:0;
+                font-size:small;
+            }
+            to{
+                opacity:1;
+                font-size:large;
+            }
         }
         #container{
             flex-basis:80%;
@@ -79,7 +90,7 @@
     </style>
 </head>
 <body>
-    <h4>Welcome future Doctor, you can definitely do this with minimal supervision, just follow the guides provided...</h4> 
+    <h5>Welcome future Doctor, you can definitely do this with minimal supervision, just follow the guides provided...</h5> 
     <div id="container">
        
         <div>
@@ -91,7 +102,7 @@
         </div>
         <div>
             <button>
-                <a href="some.html" class="btn btn-success btn-lg"> Just search  MBBS 2k26 members you know ? </a>
+                <a href="some.html" class="btn btn-success btn-lg"> Update your Details ? </a>
 
             </button>
            

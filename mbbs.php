@@ -30,20 +30,36 @@
             <input type="text"  name="hobbies" id="hobbies" placeholder="Mention your Hobbies " required>
             <input type="tel"  name="contact" id="contact" placeholder="Enter a hotline you can be reached through: Optional">
             <input type="email" name="email" id="email" placeholder="Enter your email address : Optional">
+            <div id="sex">
+            <span> <b>Male</b> </span>
+            <input type="radio" name="gender" id="gender1" value="Male"  required />
+           
+    
+            
+            <span> <b> Female </b> </span>
+            <input type="radio" name="gender" id="gender2" value="Female" required/> 
+</div>
+            
+            
+            <input type="text" name="nickname" id="nickname" placeholder="Your Nickname or P.K.A. ? " />
+            <input type="password" name="password" id="password" placeholder="Add a personal password: You need it to update details" required/>
             <!--
                  <input type="text" id="reason" placeholder="Why did you Chose Medicine ? " required>
             -->
            
             <textarea name="reason" name="reason" id="reason" cols="30" rows="7" placeholder="Why did you choose to study Medicine and why in University of Ibadan ?"></textarea>
             <button type="submit" name="submitButton" id="submitButton"> Submit your Details</button>
+           
             
        
             
         </form>
         
         
+        
 
     </div>
+    <a class="btn btn-danger btn-lg" href="public.html">Back Home ? </a>
     <!--
     <button type="submit" id="displayButton">See MBBS 2k26 members ?</button>
     <div id="displaySection">

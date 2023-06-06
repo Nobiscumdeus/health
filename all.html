@@ -66,22 +66,36 @@
             color:#fff;
         }
         table{
-            border:2px solid green;
+
+            width:100%;
             border-collapse:collapse;
+            text-align:center;
 
         }
+        table tr:first-child{
+            text-transform:uppercase;
+        }
+       
         tr:nth-child(1){
             background:#000;
 
         }
+
         tr,td{
-            border:2px solid green;
+            border:1px solid green;
+        }
+        table tr td:last-child{
+            width:20%;
+            
+
         }
         td{
             padding:5px;
+
         }
        
         table tr:hover{
+            font-size:14px;
             cursor:pointer;
             background:grey;
         }
@@ -91,6 +105,12 @@
         #exit{
             margin:5px;
         }
+        @media only screen and (max-width:600px){
+            table tr td:last-child{
+                width:20%;
+            }
+        }
+       
     </style>
 </head>
 <body>
@@ -106,10 +126,22 @@
         document.getElementById("retrievebtn").addEventListener("click",function(){
             var xhr=new XMLHttpRequest();
             xhr.open("GET","retrieve_data.php",true);
+            xhr.setRequestHeader('Content-Type','application/json');
             xhr.onreadystatechange=function(){
                 if(xhr.readyState===4 && xhr.status===200){
                     var responseData=JSON.parse(xhr.responseText);
-                    displayData(responseData);
+
+                    //To arrange in order by date
+                   
+                   
+
+
+
+                    responseData.sort(function(a,b){
+                        return new Date(b.last_updated) - new Date(a.last_updated);
+                    })
+
+                    displayData(responseData.reverse());
                     console.log("The states are ready");
                 }
             };
@@ -129,40 +161,49 @@
             //Create a table to display the data
             var table=document.createElement("table");
             var heads=table.insertRow();
-                heads.insertCell().innerHTML="Unique ID";
+
+                //heads.insertCell().innerHTML="Unique ID";
                 heads.insertCell().innerHTML="Full Names ";
                 heads.insertCell().innerHTML="Birth Month/Day";
                 heads.insertCell().innerHTML="State of Origin";
                 heads.insertCell().innerHTML="Nationality";
                 heads.insertCell().innerHTML="Hobbies";
                 heads.insertCell().innerHTML="Cellular Contact";
-                heads.insertCell().innerHTML="Email Address";
-                heads.insertCell().innerHTML="Why Medicine and UI?"
+                heads.insertCell().innerHTML="Gender";
+                heads.insertCell().innerHTML="Nickname or P.K.A."
+                heads.insertCell().innerHTML="Why Medicine and UI?";
+              //  heads.insertCell().innerHTML="Email";
 
             //Iterate over each object in the data
             for(var i=0;i<data.length;i++){
                 
 
                 var row=table.insertRow();
-                var idCell=row.insertCell();
+              //  var idCell=row.insertCell();
                 var nameCell=row.insertCell();
                 var birthCell=row.insertCell();
                 var stateCell=row.insertCell();
                 var nationCell=row.insertCell();
                 var hobbiesCell=row.insertCell();
                 var contactCell=row.insertCell();
-                var emailCell=row.insertCell();
+                var genderCell=row.insertCell();
+                var nicknameCell=row.insertCell();
                 var reasonCell=row.insertCell();
+              //  var emailCell=row.insertCell();
+                
 
-                idCell.innerHTML=data[i].id;
-                nameCell.innerHTML=data[i].name;
-                birthCell.innerHTML=data[i].birth;
-                stateCell.innerHTML=data[i].state;
-                nationCell.innerHTML=data[i].nation;
-                hobbiesCell.innerHTML=data[i].hobbies;
-                contactCell.innerHTML=data[i].contact;
-                emailCell.innerHTML=data[i].email;
-                reasonCell.innerHTML=data[i].reason;
+                //idCell.innerHTML=data[i].id;
+                nameCell.innerHTML=data[i].name || 'NIL';
+                birthCell.innerHTML=data[i].birth || 'NIL';
+                stateCell.innerHTML=data[i].state || 'NIL';
+                nationCell.innerHTML=data[i].nation ||'NIL';
+                hobbiesCell.innerHTML=data[i].hobbies ||'NIL';
+                contactCell.innerHTML=data[i].contact|| 'NIL';
+                reasonCell.innerHTML=data[i].reason || 'NIL';
+                genderCell.innerHTML=data[i].gender || 'NIL';
+                nicknameCell.innerHTML=data[i].nickname || 'NIL';
+              //  emailCell.innerHTML=data[i].email;
+                
              
 
             }

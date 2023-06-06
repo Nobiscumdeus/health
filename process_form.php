@@ -11,6 +11,9 @@ if(isset($_POST['submitButton'])){
    $contact=htmlspecialchars(stripslashes(trim($_POST['contact'])));
    $email=htmlspecialchars(stripslashes(trim($_POST['email'])));
    $reason=htmlspecialchars(stripslashes(trim($_POST['reason'])));
+   $gender=htmlspecialchars(stripslashes(trim($_POST['gender'])));
+   $nickname=htmlspecialchars(stripslashes(trim($_POST['nickname'])));
+   $password=htmlspecialchars(stripslashes(trim($_POST['password'])));
 
    //Create an array with the form data
    $formData=array(
@@ -22,19 +25,33 @@ if(isset($_POST['submitButton'])){
     'hobbies'=>$hobbies,
     'contact'=>$contact,
     'email'=>$email,
-    'reason'=>$reason
+    'reason'=>$reason,
+    'gender'=>$gender,
+    'nickname'=>$nickname,
+    'password'=>$password
+   );
+   $adminData=array(
+    'id'=>$id,
+    'name'=>$name,
+    'password'=>$password
    );
 
    //Load existing data from the json file if there is
    $existingData=json_decode(file_get_contents("data.json"),true);
 
+   $existingAdminData=json_decode(file_get_contents("admin.json"),true);
+
    //Add the new form data to the existing data
    $existingData[]=$formData;
 
+   $existingAdminData=$adminData;
+
    //Save updated data to the JSON file
    file_put_contents("data.json",json_encode($existingData));
+   //Save updated data also to admin.json
+   file_put_contents("admin.json",json_encode($existingAdminData));
    echo "<script type='text/javascript'> alert('Success!!! Your details have been uploaded successfully future Doctor') ;
-   window.setTimeout(function(){window.location.href='mbbs.php'},3000);
+   window.setTimeout(function(){window.location.href='mbbs.php'},2000);
    </script> ";
 
 }
