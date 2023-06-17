@@ -1,5 +1,9 @@
 <?php
-
+if($_SERVER['REMOTE_ADDR'] !== $_SERVER['SERVER_ADDR']){
+    header('HTTP/1.0 403 Forbidden');
+    echo "Access Forbidden";
+    exit;
+}
 
 //Lets first check if the details have been submitted
 if(isset($_POST['submit'])){

@@ -13,7 +13,7 @@
 </head>
 <body>
     <div id="container">
-        <button id="mode-toggle" class="change"><i class='fa fa-paint-brush fa-1.5x' alt="Change"></i></i></button>
+        <button id="mode-toggle" class="change"><i class='fa fa-paint-brush fa-1.5x' alt="Change"></i></button>
         <div id="start">
             <h3> UI MBBS 2k26</h3>
             <h5> Congrats to everyone who made it here. We are the group of elites! We're one

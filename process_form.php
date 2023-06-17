@@ -1,4 +1,10 @@
 <?php
+
+if($_SERVER['REMOTE_ADDR'] !== $_SERVER['SERVER_ADDR']){
+    header('HTTP/1.0 403 Forbidden');
+    echo "Access Forbidden";
+    exit;
+}
 //Preventing submission more than once 
 if($_SERVER['REQUEST_METHOD']==='POST'){
     //Get the form data 

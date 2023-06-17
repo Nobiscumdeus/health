@@ -1,5 +1,11 @@
 <?php
 
+if($_SERVER['REMOTE_ADDR'] !== $_SERVER['SERVER_ADDR']){
+    header('HTTP/1.0 403 Forbidden');
+    echo "Access Forbidden";
+    exit;
+}
+
 $data=file_get_contents("data.json");
 
 echo $data;
