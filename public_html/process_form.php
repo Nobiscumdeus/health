@@ -40,7 +40,7 @@ function detailsSubmitted($name,$birth,$state,$nation,$hobbies,$contact,$email,$
 
     foreach($data as $detail){
         //Compare the details
-        if($detail['name']===$name && $detail['birth'] && $detail['state']===$state && $detail['nation']===$nation && $detail['hobbies']===$hobbies && $detail['contact']===$contact && $detail['email'] ===$email && $detail['reason']===$reason && $detail['gender']===$gender && $detail['nickname']===$nickname && $detail['password']===$password){
+        if($detail['name']===$name && $detail['birth'] && $detail['state']===$state && $detail['nation']===$nation  && $detail['contact']===$contact && $detail['email'] ===$email  && $detail['gender']===$gender && $detail['password']===$password){
             return true; //Details are already submitted 
         }
     }
