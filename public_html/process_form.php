@@ -50,7 +50,7 @@ function detailsSubmitted($name,$birth,$state,$nation,$hobbies,$contact,$email,$
 function loadSubmittedDetails(){
   
   //  $data=file_get_contents('data.json');
-   $data=file_get_contents('json.json');
+   $data=file_get_contents('../private/json.json');
     $data=json_decode($data,true);
     return $data;
 }
@@ -97,9 +97,9 @@ if(isset($_POST['submitButton'])){
 
    //Load existing data from the json file if there is
   // $existingData=json_decode(file_get_contents("data.json"),true);
-    $existingData=json_decode(file_get_contents("json.json"),true);
+    $existingData=json_decode(file_get_contents("../private/json.json"),true);
 
-   $existingAdminData=json_decode(file_get_contents("admin.json"),true);
+   $existingAdminData=json_decode(file_get_contents("../private/admin.json"),true);
 
    //Add the new form data to the existing data
    $existingData[]=$formData;
@@ -108,9 +108,9 @@ if(isset($_POST['submitButton'])){
 
    //Save updated data to the JSON file
    //file_put_contents("data.json",json_encode($existingData));
-   file_put_contents("json.json",json_encode($existingData));
+   file_put_contents("../private/json.json",json_encode($existingData));
    //Save updated data also to admin.json
-   file_put_contents("admin.json",json_encode($existingAdminData));
+   file_put_contents("../private/admin.json",json_encode($existingAdminData));
    echo "<script type='text/javascript'> alert('Success!!! Your details have been uploaded successfully future Doctor') ;
    window.setTimeout(function(){window.location.href='mbbs.php'},2000);
    </script> ";
