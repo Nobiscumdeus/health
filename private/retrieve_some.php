@@ -14,7 +14,7 @@ if(isset($_POST['submit'])){
 
     //Load the existing json data from the file
     //$checkData=file_get_contents('data.json');
-    $checkData=file_get_contens('../private/json.json');
+    $checkData=file_get_contens('json.json');
     $records=json_decode($checkData,true);
 
     //Find the record with the matching password
@@ -65,7 +65,7 @@ if(isset($_POST['submit'])){
 
         //Save the content back to the json file 
         //file_put_contents('data.json',$jsonData);
-        file_put_contents('../private/json.json',$jsonData);
+        file_put_contents('json.json',$jsonData);
         
 
         echo "<script type='text/javascript'> alert('Congrats!!! Your details have been been updated future Doctor')    ;window.setTimeout(function(){window.location.href='mbbs.php'},1000);</script>";

@@ -3,7 +3,7 @@
 //$data=file_get_contents("../private/json.json");
 //echo $data;
 
-$json_data=file_get_contents("../private/json.json");
+$json_data=file_get_contents("json.json");
 $people=json_decode($json_data,true);
 
 //$people=array_reverse($people,true);
