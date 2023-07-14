@@ -1,3 +1,5 @@
+
+
 const start_btn=document.querySelector('.start_btn button');
 const info_box=document.querySelector('.info_box');
 const exit_btn=info_box.querySelector('.buttons .quit');
@@ -77,6 +79,20 @@ next_btn.onclick=()=>{
 }
 
 
+//
+//An ajax request to get the questions
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -85,6 +101,29 @@ next_btn.onclick=()=>{
 //Cleared up to this point 
 
 function revealQuestions(index){
+
+    //Ajax is making a request, to get the questions
+
+    //make an ajax request to get the questions needed
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     const que_text=document.querySelector(".que_text");
     const option_list=document.querySelector(".option_list");
     let que_tag='<span>' + questions[index].num+"."+ questions[index].question + '</span>'
@@ -189,9 +228,29 @@ function showResultBox(){
             quit_quiz.style.display="none";
         },2000);
 
-        setTimeout(function(){
+        /** 
+         *  setTimeout(function(){
             window.location.href='home.html';
         },5000);
+        */
+       fetch('set_session.php',{method:'POST',credentials:'same-origin'})
+       .then(response=>{
+        //handle the response
+        if(response.ok){
+            //session was set successfully, return to the home page;
+            window.location.href="home.php";
+        }else{
+            //session setting failed
+            alert('oops, an error occurred');
+        }
+       })
+       .catch(error=>{
+        //erro message
+
+       });
+
+
+       
 
        })()
 

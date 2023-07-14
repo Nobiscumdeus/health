@@ -1,3 +1,10 @@
+<?php
+session_start();
+
+$_SESSION['index']='index';
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,6 +34,24 @@
         
 
         }
+        #popup div{
+        position:absolute;
+        top:50%;
+          left:50%;
+          transform:translate(-50%,-50%);
+          padding:10px;
+
+        }
+        #popup div h3{
+            color:#fff;
+            
+           
+        }
+        #popup div i{
+            color:#fff;
+            
+
+        }
         .btn{
             padding:8px 15px;
             background:#fff;
@@ -46,8 +71,8 @@
         }
         .pop{
             position:absolute;
-            max-width:300px;
-            max-height:300px;
+            max-width:400px;
+            max-height:400px;
             outline:none;
             background:#fff;
             border-radius:6px;
@@ -124,20 +149,27 @@
         .pop button:hover{
             opacity:0.8;
         }
+
         
         @media only screen and (max-width:600px){
             .pop{
                 width:300px;
                 padding:0 10px 10px;
             }
+            .btn{
+            padding:5px 10px;
+           
+        }
         }
 
     </style>
 </head>
 <body id="popup">
         <div>
+        <i class="fa fa-user-md fa-3x"></i>
+            <h3> Welcome to Future Physicians Hub </h3>
             
-            <button type="submit" class="btn" onclick="openPop()"> Welcome, click to proceed ! </button>
+            <button type="submit" class="btn" onclick="openPop()"> Click to proceed ! </button>
 
         </div>
        
@@ -166,7 +198,7 @@
             pop.classList.remove('open-pop');
         }
         function quiz(){
-            window.location.href="../private/quiz.html";
+            window.location.href="quiz.php";
         }
 
     </script>

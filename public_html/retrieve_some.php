@@ -1,11 +1,13 @@
 <?php
-/**
-if($_SERVER['REMOTE_ADDR'] !== $_SERVER['SERVER_ADDR']){
-    header('HTTP/1.0 403 Forbidden');
-    echo "Access Forbidden";
-    exit;
+ini_set('session.cookie_lifetime',1800); //1800 seconds is also 30 minutes 
+ini_set('session.gc_maxlifetime',1800);
+
+ini_set('session.gc_probability',1); //allows for garbage cleaning 
+ini_set('session.gc_divisor',1);
+session_start();
+if(!isset($_SESSION['home']) || $_SESSION['home'] !== 'home'){
+    header('Location:index.php');
 }
-**/
 //Lets first check if the details have been submitted
 if(isset($_POST['submit'])){
 

@@ -1,10 +1,29 @@
+
+<?php
+ini_set('session.cookie_lifetime',1800); //1800 seconds is also 30 minutes 
+ini_set('session.gc_maxlifetime',1800);
+
+ini_set('session.gc_probability',1); //allows for garbage cleaning 
+ini_set('session.gc_divisor',1);
+session_start();
+
+
+if(!isset($_SESSION['access']) || $_SESSION['access'] !== 'allowed'){
+    header("Location:index.php");
+}
+
+
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chasfat | MBBS 2k26 -All details </title>
+    <title>Chasfat | MBBS 2k26 members </title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -128,12 +147,13 @@
 </head>
 <body>
     <button id="retrievebtn">
-        Retrieve all MBBS 2k26 Class Details 
+       Future Physicians | MBBS 2k26 class 
     </button>
      <p id='total'></p>
+     
     <div id="result">
     </div>
-    <a id="exit" href="home.html" class="btn btn-danger btn-2x"> Ready to Exit Future Doc ?</a>
+    <a id="exit" href="home.php" class="btn btn-danger btn-2x"> Ready to Exit Future Doc ?</a>
    
 
     <script>

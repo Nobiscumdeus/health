@@ -1,10 +1,25 @@
+<?php
+ini_set('session.cookie_lifetime',1800); //1800 seconds is also 30 minutes 
+ini_set('session.gc_maxlifetime',1800);
+
+ini_set('session.gc_probability',1); //allows for garbage cleaning 
+ini_set('session.gc_divisor',1);
+session_start();
+
+if(!isset($_SESSION['quiz_completed']) || $_SESSION['quiz_completed'] !== true){
+    header("Location:index.php");
+}
+
+$_SESSION['home']='home';
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chasfat | MBBS 2k26 </title>
+    <title>MBBS 2k26 |waiting room </title>
     <style type="text/css">
         *{
             margin:0;
@@ -95,21 +110,21 @@
        
         <div>
             <button>
-                <a href="mbbs.php" class="btn btn-primary btn-lg"> Submit your Details ? </a>
+                <a href="mbbs.php" class="btn btn-primary btn-lg"> Enrollment for Future Docs </a>
 
             </button>
            
         </div>
         <div>
             <button>
-                <a href="some.html" class="btn btn-success btn-lg"> Update your Details ? </a>
+                <a href="some.php" class="btn btn-success btn-lg">  Update Enrollment  with password </a>
 
             </button>
            
         </div>
         <div>
             <button>
-                <a href="all.html" class="btn btn-success btn-lg"> See all MBBS 2k26 members details ?  </a>
+                <a href="access.php" class="btn btn-success btn-lg"> Meet Future Physicians  </a>
 
             </button>
            

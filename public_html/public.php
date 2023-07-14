@@ -1,3 +1,10 @@
+<?php
+session_start();
+
+$_SESSION['index']='index';
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
